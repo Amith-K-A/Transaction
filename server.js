@@ -34,20 +34,6 @@ db.mongoose
 
 require("./routes/transaction-routes")(app);
 
-app.use("/", express.static(path.join(__dirname, 'client/build')))
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client/build', "index.html"))
-})
-
-if (app.get("env") === "production") {
-  app.use("*", express.static(path.join(__dirname, "../src", "build")));
-  app.get("/*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../src", "build", "index.html"));
-  });
-}
-
-
-
 app.listen(app.get("port"), () => {
   console.log(`Server is running on port`);
 });

@@ -31,8 +31,8 @@ db.mongoose
     process.exit();
   });
 
-
 require("./routes/transaction-routes")(app);
+require("./routes/wallet-routes")(app);
 
 app.listen(app.get("port"), () => {
   console.log(`Server is running on port`);

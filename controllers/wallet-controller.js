@@ -21,6 +21,19 @@ exports.createWallet = (req, res) => {
   });
 };
 
+exports.getWallet = (req, res) => {
+  const walletId = req.params.walletId;
+
+  Wallet.findOne({ _id: walletId }, (err, wallet) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }
+
+    res.send(wallet);
+  });
+};
+
 exports.transaction = async (req, res) => {
   const walletId = req.params.walletId;
   const amount = req.body.amount;

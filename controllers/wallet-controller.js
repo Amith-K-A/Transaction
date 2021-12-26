@@ -4,10 +4,10 @@ const Transaction = db.transaction;
 
 exports.createWallet = (req, res) => {
   const wallet = new Wallet({
-    userID: req.body.userId,
     name: req.body.name,
     balance: req.body.balance,
-    Date: new Date(),
+    userId: req.body.userId,
+    date: new Date(),
     transactionId: req.body.transactionId,
   });
 
@@ -34,6 +34,19 @@ exports.getWallet = (req, res) => {
   });
 };
 
+exports.getWalletByUser = (req, res) => {
+  const userId = req.params.userId;
+
+  Wallet.findOne({ userId: userId }, (err, wallet) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }
+
+    res.send(wallet);
+  });
+};
+
 exports.transaction = async (req, res) => {
   const walletId = req.params.walletId;
   const amount = req.body.amount;
@@ -41,17 +54,20 @@ exports.transaction = async (req, res) => {
 
   await Wallet.findOne({ _id: walletId }, async function (err, wallet) {
     if (err) return res.send(500, { error: err });
-    if (!wallet) return res.send(500, { error: "Wallet not found" });
+    if (!wallet) return res.send(500, { message: "Wallet not found" });
 
-    const result = wallet.balance - Math.abs(amount);
+    const result = parseFloat(wallet.balance) - Math.abs(amount).toFixed(4);
 
     if (amount > 0) {
-      wallet.balance = wallet.balance + amount;
+      const value =  parseFloat(wallet.balance) + parseFloat(amount);
+      wallet.balance = value.toFixed(4);
     } else {
       if (result >= 0) {
-        wallet.balance = result;
+        wallet.balance = result.toFixed(4);
       } else {
-        return res.send(500, { error: "Low balence" });
+        // throw new Error("Insufficient funds");
+        return res.status(400).send({ message: "Insufficient funds" });
+        //send error response
       }
     }
 

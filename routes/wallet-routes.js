@@ -8,6 +8,7 @@ module.exports = function (app) {
   });
 
   app.post("/setup", [], controller.createWallet);
-  app.post("/transaction/:walletId", [], controller.transaction);
+  app.post("/transact/:walletId", [], controller.transaction);
   app.get("/wallet/:walletId", [], controller.getWallet);
+  app.get("/walletByUser/:userId", [], controller.getWalletByUser);
 };

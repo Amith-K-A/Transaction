@@ -20,6 +20,8 @@ Install [MongoDB](https://docs.mongodb.com/manual/installation/) and Remember to
 
 ## Project setup
 
+Follow below steps to local set up
+
 ### `Clone`
 
 Clone the project to local machine.
@@ -48,3 +50,21 @@ Note: Make sure your mongoDB is running as [replica set](https://docs.mongodb.co
 Use Below Link for Backend test
 
 https://transactions01backend.herokuapp.com/
+
+
+### End points awailable
+
+1. /setup
+    Type Post, Creats a new wallet for a user.
+   
+2. /transact/:walletId
+    Type Post, Create a transaction on wallet 
+    
+3. /transactions?walletId=1243434&skip=0&limit=10
+    Type Get, Returns transactions of wallet using limt and skip as query.
+    
+4. /wallet/walletId
+    Type Get, Returns Wallet by walletId
+    
+5. /walletByUser/:userId
+    Type Get, Returns wallet by userId

@@ -54,17 +54,17 @@ https://transactions01backend.herokuapp.com/
 
 ### End points awailable
 
-1. /setup
+1. `/setup`
     Type Post, Creats a new wallet for a user.
    
-2. /transact/:walletId
+2. `/transact/:walletId`
     Type Post, Create a transaction on wallet 
     
-3. /transactions?walletId=1243434&skip=0&limit=10
+3. `/transactions?walletId=1243434&skip=0&limit=10`
     Type Get, Returns transactions of wallet using limt and skip as query.
     
-4. /wallet/walletId
+4. `/wallet/walletId`
     Type Get, Returns Wallet by walletId
     
-5. /walletByUser/:userId
+5. `/walletByUser/:userId`
     Type Get, Returns wallet by userId

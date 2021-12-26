@@ -4,8 +4,9 @@ const Wallet = mongoose.model(
   "wallet",
   new mongoose.Schema({
     name: String,
-    date: Date,
     balance: Number,
+    userId: Number,
+    date: Date,
     transactionId: []
   })
 );

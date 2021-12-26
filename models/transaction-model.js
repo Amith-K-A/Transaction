@@ -9,7 +9,7 @@ const Transaction = mongoose.model(
     description: String,
     date: Date,
     type: String,
-  })
+  }, { versionKey: false })
 );
 
 module.exports = Transaction;

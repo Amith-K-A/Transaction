@@ -1,4 +1,4 @@
-const controller = require("../controllers/wallet-controller");
+const controller = require("../controllers/transaction-controller");
 
 module.exports = function (app) {
   app.use(function (req, res, next) {
@@ -7,6 +7,5 @@ module.exports = function (app) {
     next();
   });
 
-  app.post("/setup", [], controller.createWallet);
-  app.post("/transaction/:walletId", [], controller.transaction);
+  app.get("/transactions", [], controller.getTransactions);
 };

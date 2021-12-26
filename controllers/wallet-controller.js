@@ -65,9 +65,7 @@ exports.transaction = async (req, res) => {
       if (result >= 0) {
         wallet.balance = result.toFixed(4);
       } else {
-        // throw new Error("Insufficient funds");
         return res.status(400).send({ message: "Insufficient funds" });
-        //send error response
       }
     }
 

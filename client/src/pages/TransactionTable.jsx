@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CSVLink, CSVDownload } from "react-csv";
+import { CSVLink } from "react-csv";
 import styled from "styled-components";
 import Loader from "react-loader-spinner";
 import { useHistory } from "react-router-dom";

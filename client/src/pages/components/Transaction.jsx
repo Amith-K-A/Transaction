@@ -3,7 +3,6 @@ import Loader from "react-loader-spinner";
 import styled from "styled-components";
 import Switch from "react-switch";
 import useTransaction from "../../api/hooks/useTransaction";
-// import useGetWallet from "../../api/hooks/useGetWallet";
 
 const FieldStyle = styled.div`
   width: max-content;

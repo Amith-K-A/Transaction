@@ -54,17 +54,43 @@ https://transactions01backend.herokuapp.com/
 
 ### End points awailable
 
+Note: `userId` is by default 1 as authentication is not added as of now.
+
 1. `/setup`
-    Type Post, Creats a new wallet for a user.
+    Type POST, Creats a new wallet for a user.
+    
+    Example: https://transactions01backend.herokuapp.com/setup
+
+        body: {
+        "userId": 1,
+        "balance": 20,
+        "name": "Hello world",
+        "transactionId": []
+        }
    
 2. `/transact/:walletId`
-    Type Post, Create a transaction on wallet 
+    Type POST, Create a transaction on wallet,  replace `walletID` by `_id` of `/setup`reponse.
+    
+    Example: https://transactions01backend.herokuapp.com/transact/61c877a534b57b001647449f
+
+        body: {
+        "amount": 80,
+        "description": "test"
+        }
     
 3. `/transactions?walletId=1243434&skip=0&limit=10`
-    Type Get, Returns transactions of wallet using limt and skip as query.
+    Type GET, Returns transactions of wallet using limt and skip as query.
+    
+    Example: https://transactions01backend.herokuapp.com/transactions?walletId=61c877a534b57b001647449f&skip={0}&limit={10}
+    
     
 4. `/wallet/walletId`
-    Type Get, Returns Wallet by walletId
+    Type GET, Returns Wallet by walletId
+    
+    Example: https://transactions01backend.herokuapp.com/wallet/61c877a534b57b001647449f
+    
     
 5. `/walletByUser/:userId`
-    Type Get, Returns wallet by userId
+    Type GET, Returns wallet by userId
+    
+    Example: https://transactions01backend.herokuapp.com/wallet/1

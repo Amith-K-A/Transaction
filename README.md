@@ -94,3 +94,8 @@ Note: `userId` is by default 1 as authentication is not added as of now.
     Type GET, Returns wallet by userId
     
     Example: https://transactions01backend.herokuapp.com/wallet/1
+    
+    
+### Video Demo for application
+
+## https://www.loom.com/share/273d3ecfae6a473a8393af594b9fdb97

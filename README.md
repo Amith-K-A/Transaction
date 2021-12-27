@@ -2,7 +2,7 @@
 
 # Getting Started with Project
 
-This Project is a demo of a transaction in real time, user can create a wallet and do transactions over it and can check all the transactions and export it as CSV file.
+This Project is a demo of a transaction in real-time, user can create a wallet and do transactions over it and can check all the transactions and export it as a CSV file.
 
 ## Prerequisite to project setup
 
@@ -24,40 +24,40 @@ Follow below steps to local set up
 
 ### `Clone`
 
-Clone the project to local machine.
+Clone the project to the local machine.
 
 
 ### `npm install`
 
-Installs all the required dependencies for server.
+Installs all the required dependencies for the server.
 
 
 ### `npm run install-client`
 
-Installs all the required dependencies for client.
+Installs all the required dependencies for the client.
 
 ### `npm run dev`
 
-Starts the backend server and front end server for development environment.
+Starts the backend server and front end server for the development environment.
 
-Note: Make sure your mongoDB is running as [replica set](https://docs.mongodb.com/manual/tutorial/deploy-replica-set/) in your local machine
+Note: Make sure your MongoDB is running as [replica set](https://docs.mongodb.com/manual/tutorial/deploy-replica-set/) in your local machine
 
 
 ## Project links
 
 [Click here](https://transactions01.herokuapp.com/) for a demo
 
-Use Below Link for Backend test
+Use Below Link for the Backend test
 
 https://transactions01backend.herokuapp.com/
 
 
-### End points awailable
+### Endpoints available
 
 Note: `userId` is by default 1 as authentication is not added as of now.
 
 1. `/setup`
-    Type POST, Creats a new wallet for a user.
+    Type POST, Creates a new wallet for a user.
     
     Example: https://transactions01backend.herokuapp.com/setup
 
@@ -69,7 +69,7 @@ Note: `userId` is by default 1 as authentication is not added as of now.
         }
    
 2. `/transact/:walletId`
-    Type POST, Create a transaction on wallet,  replace `walletID` by `_id` of `/setup`reponse.
+    Type POST, Create a transaction on the wallet,  replace `walletID` with `_id` of `/setup` response.
     
     Example: https://transactions01backend.herokuapp.com/transact/61c877a534b57b001647449f
 
@@ -79,7 +79,7 @@ Note: `userId` is by default 1 as authentication is not added as of now.
         }
     
 3. `/transactions?walletId=1243434&skip=0&limit=10`
-    Type GET, Returns transactions of wallet using limt and skip as query.
+    Type GET, Returns transactions of the wallet using limit and skip as the query.
     
     Example: https://transactions01backend.herokuapp.com/transactions?walletId=61c877a534b57b001647449f&skip={0}&limit={10}
     
@@ -96,6 +96,18 @@ Note: `userId` is by default 1 as authentication is not added as of now.
     Example: https://transactions01backend.herokuapp.com/wallet/1
     
     
-### Video Demo for application
+## Video Demo for application
 
 ## https://www.loom.com/share/273d3ecfae6a473a8393af594b9fdb97
+
+
+## Database design
+
+Deployed MongoDB as a replica set to support transactions When a transaction is initiated, Transaction will commit in the two-step 
+Calculate balance and update wallet record.
+If the wallet record is updated create a transaction record.
+if anything goes wrong in the above operation whole transaction will roll-back
+
+![data base](https://user-images.githubusercontent.com/15859913/147466941-bc23c5f8-610a-4ea0-950f-78d311245aef.png)
+
+Note: User table is not implemented as of now so userId is by default 1
